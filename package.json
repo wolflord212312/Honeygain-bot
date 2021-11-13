@@ -1,0 +1,18 @@
+{
+  "name": "honeygain-bot",
+  "version": "1.0.0",
+  "description": "honeygain bot that sends an update every custom time to a webhook using discord",
+  "main": "index.js",
+  "author": "NoName31",
+  "scripts": {
+    "setup": "node setup.js",
+    "start": "node index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "colors": "^1.4.0",
+    "discord.js": "^13.3.1",
+    "prompt": "^1.2.0"
+  }
+}
