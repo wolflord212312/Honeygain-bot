@@ -4,8 +4,11 @@ Honeygain is a nodeJS script that notifies you about your Honeygain earnings
 
 ## Requirements
 NodeJS 16 LTS\
+Link: https://nodejs.org/en/\
 Honeygain account\
-Discord account :)
+Link: https://honeygain.com/\
+Discord account :)\
+Link: https://discord.com
 
 ## How to get your token and Discord webhook URL
 press F12 or open the developer tools\
