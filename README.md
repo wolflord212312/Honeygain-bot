@@ -7,11 +7,11 @@ press F12 or open the developer tools\
 then go to https://dashboard.honeygain.com/
 go to ***Network*** tab\
 
-https://i.ibb.co/FghbN92/network.png\
+https://i.ibb.co/FghbN92/network.png
 
 then click on ***today***\
 
-https://i.ibb.co/HHgMGkp/earnings.png\
+https://i.ibb.co/HHgMGkp/earnings.png
 
 scroll down to ***Request headers***\
 and copy the ***Authorization*** token\
