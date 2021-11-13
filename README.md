@@ -7,11 +7,11 @@ press F12 or open the developer tools\
 then go to https://dashboard.honeygain.com/
 go to ***Network*** tab\
 
-https://i.ibb.co/FghbN92/network.png
+![network-tab](https://i.ibb.co/FghbN92/network.png)
 
 then click on ***today***\
 
-https://i.ibb.co/HHgMGkp/earnings.png
+![today-api](https://i.ibb.co/HHgMGkp/earnings.png)
 
 scroll down to ***Request headers***\
 and copy the ***Authorization*** token\
@@ -20,15 +20,15 @@ now we need a Discord webhook URL\
 Go to your Discord server or friends server where you have admin permissions\
 click on ***settings***[
 
-https://i.ibb.co/YP0cwD0/settings.png
+![settings](https://i.ibb.co/YP0cwD0/settings.png)
 
 now go to interactions and click on webhooks\
 
-https://i.ibb.co/850ZbCT/webhook.png
+![webhook](https://i.ibb.co/850ZbCT/webhook.png)
 
 make your new webhook and copy the URL
 
-https://i.ibb.co/ykPGB0j/webhook-New.png
+![new-webhook](https://i.ibb.co/ykPGB0j/webhook-New.png)
 
 
 run 'npm run setup' and paste the information that the setup asks you!\
