@@ -1,6 +1,6 @@
 # Honeygain bot
 
-Foobar is a nodeJS script that notifies you about your Honeygain earnings
+Honeygain is a nodeJS script that notifies you about your Honeygain earnings
 
 ## How to get your token and Discord webhook URL
 press F12 or open the developer tools\
