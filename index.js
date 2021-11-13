@@ -46,7 +46,7 @@ var config = {
   method: 'get',
   url: 'https://dashboard.honeygain.com/api/v1/earnings/today',
   headers: { 
-    'Authorization': `Bearer ${token}`
+    'Authorization': `${token}`
   }
 };
 axios(config)
