@@ -1,6 +1,5 @@
 const { Client, Intents } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
-const botid = config.BOT_TOKEN
 const axios = require('axios');
 const discord = require('discord.js');
 const config = require('./config.json');
@@ -8,11 +7,12 @@ const token = config.token;
 const Ref = config.reflink;
 const colors = require('colors');
 const { message } = require('prompt');
+
 ///////////////////////
 ///  DOING CHECKS   ///
 ///////////////////////
 const interval = config.time * 1000;
-let guild = client.guilds.cache.get(`755803825113137222`);
+let guild = client.guilds.cache.get(config.guildID);
 client.destroy() //logs out of Discord
 ///////////////////////
 ///  LOADING CLIENT ///
@@ -52,7 +52,7 @@ axios(config)
     var data = response.data; //get data from response
     let getMB = data.gathering.bytes / Math.pow(1024, 2); //convert to MB
     let mbs = getMB.toFixed(2); //round to 2 decimal places   
-      const channel = client.channels.cache.get('931079077706731530'); // Do nothing if the channel wasn't found on this server 
+      const channel = client.channels.cache.get(config.channelID); // Do nothing if the channel wasn't found on this server 
       if (!channel) return; // Send the message, mentioning the member 
       let embed = new discord.MessageEmbed() //create embed
     .setTitle('HoneyGain status')
@@ -77,4 +77,4 @@ console.log(error);
 }, interval);
 
 
-client.login(botid)
+client.login(config.BOT_TOKEN)
