@@ -2,9 +2,9 @@ const axios = require('axios');
 const discord = require('discord.js');
 const config = require('./config.json');
 const token = config.token;
+const Ref = config.reflink;
 const colors = require('colors');
-
-
+let count = 0;
 ///////////////////////
 ///  DOING CHECKS   ///
 ///////////////////////
@@ -49,26 +49,46 @@ var config = {
     'Authorization': `${token}`
   }
 };
+
 axios(config)
 .then(function (response) {
     var data = response.data; //get data from response
     let getMB = data.gathering.bytes / Math.pow(1024, 2); //convert to MB
     let mbs = getMB.toFixed(2); //round to 2 decimal places
-
+    if (count != 1){  
     const embed = new discord.MessageEmbed() //create embed
     .setTitle('HoneyGain status')
-    .setThumbnail('https://bit.ly/3wJMPsc')
+    .setThumbnail('https://bit.ly/3KDBLmN')
     .setColor('RANDOM')
     .setDescription(`HoneyGain balance update!`)
+    .setURL(`${Ref}`)
     .addFields(
       { name: `Earned today:`, value: `***${data.total.credits} CR***`, inline: true },
       { name: `Gathering:`, value: ` ${mbs} MB \n***${data.gathering.credits} CR***`, inline: true },
       { name: `Winnings:`, value: `***${data.winning.credits} CR***`, inline: true },
     )
     .setTimestamp();
-
+    
     webhook.send({ embeds: [embed] }); //send embed
     console.log(`[HG Bot] New Update! \n    [HG Bot] Earned today: ${data.total.credits} \n    [HG Bot] Gathering:  ${mbs} MB - ${data.gathering.credits} CR \n    [HG Bot] Winnings: ${data.winning.credits}`.blue); //log to console
+    count++
+    }
+    else {
+      const embed = new discord.MessageEmbed() //create embed
+      .setTitle('HoneyGain status')
+      .setThumbnail('https://bit.ly/3KDBLmN')
+      .setColor('RANDOM')
+      .setDescription(`HoneyGain balance update!`)
+      .setURL(`${Ref}`)
+      .addFields(
+        { name: `Earned today:`, value: `***${data.total.credits} CR***`, inline: true },
+        { name: `Gathering:`, value: ` ${mbs} MB \n***${data.gathering.credits} CR***`, inline: true },
+        { name: `Winnings:`, value: `***${data.winning.credits} CR***`, inline: true },
+      )
+      .setTimestamp();
+      webhook.edit({ embeds: [embed] });
+      console.log(`[HG Bot] New Update! \n    [HG Bot] Earned today: ${data.total.credits} \n    [HG Bot] Gathering:  ${mbs} MB - ${data.gathering.credits} CR \n    [HG Bot] Winnings: ${data.winning.credits}`.blue); //log to console
+    }
 })
 .catch(function (error) {
   console.log(error);
