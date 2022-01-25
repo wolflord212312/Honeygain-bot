@@ -2,5 +2,7 @@
     "BOT_TOKEN":"",
     "token":"",
     "time":"",
-    "reflink":""
+    "reflink":"",
+    "channelID":"",
+    "guildID":""
 }
