@@ -6,13 +6,13 @@ const config = require('./config.json');
 const token = config.token;
 const Ref = config.reflink;
 const colors = require('colors');
-const { message } = require('prompt');
-const guilds = config.guildID
-const channels = config.channelID
+const guilds = config.guildID;
+var channels = config.channelID;
 ///////////////////////
 ///  DOING CHECKS   ///
 ///////////////////////
 const interval = config.time * 1000;
+const interval2 = 86400 * 1000;
 let guild = client.guilds.cache.get(`${guilds}`);
 client.destroy() //logs out of Discord
 ///////////////////////
@@ -48,13 +48,14 @@ headers: {
 };
 
 axios(config)
-.then(function (response) {
+.then(function (response, message) {
     var data = response.data; //get data from response
     let getMB = data.gathering.bytes / Math.pow(1024, 2); //convert to MB
     let mbs = getMB.toFixed(2); //round to 2 decimal places   
-      const channel = client.channels.cache.get(`${channels}`); // Do nothing if the channel wasn't found on this server 
-      if (!channel) return; // Send the message, mentioning the member 
-      const embed = new discord.MessageEmbed() //create embed
+    let getminutes = data.cdn.seconds / 60
+    let minutes = getminutes.toFixed(0)
+    const channel = client.channels.cache.get(`${channels}`);
+      let embed = new discord.MessageEmbed() //create embed
     .setTitle('HoneyGain status')
     .setImage('https://bit.ly/')
     .setColor('RANDOM')
@@ -64,6 +65,8 @@ axios(config)
         { name: `Earned today:`, value: `***${data.total.credits} CR***`, inline: true },
         { name: `Gathering:`, value: ` ${mbs} MB \n***${data.gathering.credits} CR***`, inline: true },
         { name: `Winnings:`, value: `***${data.winning.credits} CR***`, inline: true },
+        { name: `Content delivery:`, value: `***${data.cdn.credits} CR***`, inline: true },
+        { name: `Content delivery time:`, value: `***${minutes} Minutes***`, inline: true }
     )
     .setTimestamp();
     channel.send({ embeds: [embed] });
@@ -73,6 +76,5 @@ axios(config)
 console.log(error);
 });
 }, interval);
-
 
 client.login(config.BOT_TOKEN)
