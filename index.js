@@ -14,7 +14,7 @@ var channels = config.channelID;
 const interval = config.time * 1000;
 const interval2 = 86400 * 1000;
 let guild = client.guilds.cache.get(`${guilds}`);
-client.destroy() //logs out of Discord
+
 ///////////////////////
 ///  LOADING CLIENT ///
 ///////////////////////
